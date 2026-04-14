@@ -18,6 +18,7 @@
     </div>
 </nav>
 
+<!-- Header -->
 <header class="hero">
     <div class="container hero__inner">
         <div class="left">
