@@ -23,7 +23,7 @@
         <div class="left">
             <div class="badge">Developer</div>
             <h1>Halo Aku<br>Fiqih Badrian</h1>
-            <button class="btn">Tentang Saya</button>
+            <a href="<?= base_url('index.php/profile#tentang') ?>" style="text-decoration: none;" class="btn">Tentang Saya</a>
         </div>
 
         <div class="right">
@@ -35,7 +35,7 @@
 <!-- Tentang -->
 <div id="tentang" class="section-content">
     <div class="container">
-        <section>
+        <section class="section-panel about">
             <div class="section-header">
                 <h2>Tentang Saya</h2>
             </div>
@@ -51,7 +51,7 @@
 <!-- Kontak -->
 <div id="kontak" class="section-content">
     <div class="container">
-        <section>
+        <section class="section-panel contact">
             <div class="section-header">
                 <h2>Kontak</h2>
             </div>

@@ -164,19 +164,20 @@ html {
 
 .section-header h2 {
     margin: 0;
-    font-size: 32px;
+    font-size: 44px;
     color: #2f343b;
+    font-weight: 700;
 }
 
 .section-body {
     color: #46505a;
-    line-height: 1.75;
-    font-size: 16px;
-    max-width: 860px;
+    line-height: 1.78;
+    font-size: 18px;
+    max-width: 880px;
 }
 
 .section-body p {
-    margin: 0 0 14px;
+    margin: 0 0 18px;
 }
 
 .section-body p:last-child {
@@ -192,10 +193,11 @@ html {
 }
 
 .contact-list li {
-    padding: 12px 14px;
+    padding: 14px 16px;
     background-color: #f7f4ef;
     border: 1px solid #d9d2c8;
     border-radius: 8px;
+    font-size: 17px;
 }
 
 .contact-list a {
@@ -252,7 +254,7 @@ html {
     }
 
     .section-header h2 {
-        font-size: 30px;
+        font-size: 36px;
     }
 
     .section-body {
@@ -289,11 +291,15 @@ html {
     }
 
     .section-header h2 {
-        font-size: 26px;
+        font-size: 28px;
+    }
+
+    .section-body {
+        font-size: 16px;
     }
 
     .contact-list li {
-        padding: 9px 10px;
+        padding: 11px 12px;
         font-size: 15px;
         word-break: break-word;
     }
