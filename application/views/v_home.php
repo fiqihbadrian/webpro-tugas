@@ -52,15 +52,20 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <section class="jumbotron">">
-                    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <section class="jumbotron">
+                    <div class="p-5 mb-4 bg-body-tertiary rounded-5">
                         <div class="container-fluid py-5">
-                            <h1 class="display-5 fw-bold">Fiqih Badrian</h1>
-                            <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                            <button class="btn btn-primary btn-lg" type="button">Download CV</button>
+                            <div class="row align-items-center g-4">
+                                <div class="col-12 col-lg-8">
+                                    <h1 class="display-5 fw-bold">Fiqih Badrian</h1>
+                                    <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                                    <button class="btn btn-primary btn-lg" type="button">Download CV</button>
+                                </div>
+                                <div class="col-12 col-lg-4 text-lg-end">
+                                    <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid rounded-5">
+                                </div>
+                            </div>
                         </div>
-                        <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid d-block ms-auto mt-4" style="max-width: 280px;">
-                        
                     </div>
                 </section>
             </div>
@@ -87,11 +92,11 @@
 
     <!-- Portofolio -->
     <div id="portofolio" class="container vh-100 align-items-center d-flex">
-        <div class="row">
-            <div class="text-center mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5">
                 <h1>Portofoolio Saya</h1>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 mb-4">
                 <div class="card" style="width: 18rem;">
                     <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top" alt="hahaha">
                     <div class="card-body">
@@ -101,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 mb-4">
                 <div class="card" style="width: 18rem;">
                     <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top" alt="hahaha">
                     <div class="card-body">
@@ -111,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 mb-4">
                 <div class="card" style="width: 18rem;">
                     <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top" alt="hahaha">
                     <div class="card-body">
