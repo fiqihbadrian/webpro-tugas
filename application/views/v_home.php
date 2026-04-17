@@ -59,7 +59,8 @@
                             <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
                             <button class="btn btn-primary btn-lg" type="button">Download CV</button>
                         </div>
-                        <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid mt-4">
+                        <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid d-block ms-auto mt-4" style="max-width: 280px;">
+                        
                     </div>
                 </section>
             </div>
