@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top py-1">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center py-0" href="#"><img class="img-fluid" width="90" src="<?= base_url('public/assets/images/logo.png'); ?>" alt="Logo"></a>
+            <a class="navbar-brand d-flex align-items-center py-0" href="#"><img class="img-fluid rounded-5" width="90" src="<?= base_url('public/assets/images/logo.png'); ?>" alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,8 +39,8 @@
                     
                 </ul>
                 <form class="d-flex mt-2 mt-lg-0" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2 rounded-5" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success rounded-pill px-3" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -59,7 +59,7 @@
                                 <div class="col-12 col-lg-8">
                                     <h1 class="display-5 fw-bold">Fiqih Badrian</h1>
                                     <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                                    <button class="btn btn-primary btn-lg" type="button">Download CV</button>
+                                    <button class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" type="button">Download CV</button>
                                 </div>
                                 <div class="col-12 col-lg-4 text-lg-end">
                                     <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid rounded-5">
@@ -82,7 +82,7 @@
                         <div class="container-fluid py-5">
                             <h1 class="display-5 fw-bold">About Me</h1>
                             <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                            <button class="btn btn-primary btn-lg" type="button">Download CV</button>
+                            <button class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" type="button">Download CV</button>
                         </div>
                     </div>
                 </section>
@@ -96,33 +96,33 @@
             <div class="col-12 text-center mb-5">
                 <h1>Portofoolio Saya</h1>
             </div>
-            <div class="col-md-3 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card h-100 rounded-5 shadow overvlow-hidden">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top" alt="hahaha">
+                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body ">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-3 shadow-sm">Go somewhere</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top " alt="hahaha">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 rounded-5 shadow overvlow-hidden">
+                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-3 shadow-sm">Go somewhere</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top" alt="hahaha">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 rounded-5 shadow overvlow-hidden">
+                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-3 shadow-sm">Go somewhere</a>
                     </div>
                 </div>
             </div>
