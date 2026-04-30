@@ -36,7 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#kontak">Kontak</a>
                     </li>
-                    
+
                 </ul>
                 <form class="d-flex mt-2 mt-lg-0" role="search">
                     <input class="form-control me-2 rounded-5" type="search" placeholder="Search" aria-label="Search" />
@@ -49,32 +49,32 @@
 
     <!-- Jumbotron -->
     <div id="beranda" class="vh-100 d-flex align-items-center pt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <section class="jumbotron">
-                    <div class="p-5 mb-4 bg-body-tertiary rounded-5">
-                        <div class="container-fluid py-5">
-                            <div class="row align-items-center g-4">
-                                <div class="col-12 col-lg-8">
-                                    <h1 class="display-5 fw-bold">Fiqih Badrian</h1>
-                                    <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                                    <button class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" type="button">Download CV</button>
-                                </div>
-                                <div class="col-12 col-lg-4 text-lg-end">
-                                    <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid rounded-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <section class="jumbotron">
+                        <div class="p-5 mb-4 bg-body-tertiary rounded-5">
+                            <div class="container-fluid py-5">
+                                <div class="row align-items-center g-4">
+                                    <div class="col-12 col-lg-8">
+                                        <h1 class="display-5 fw-bold">Fiqih Badrian</h1>
+                                        <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                                        <button class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" type="button">Download CV</button>
+                                    </div>
+                                    <div class="col-12 col-lg-4 text-lg-end">
+                                        <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid rounded-5">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
-    </div>
 
     <!-- About -->
-     <div id="tentang" class="container vh-100 align-items-center d-flex">
+    <div id="tentang" class="container vh-100 align-items-center d-flex">
         <div class="row">
             <div class="col">
                 <section class="about">
@@ -87,13 +87,13 @@
                 </section>
             </div>
         </div>
-     </div>
+    </div>
 
     <!-- Portofolio -->
     <div id="portofolio" class="container py-5">
         <div class="row justify-content-around">
             <div class="col-12 text-center mb-5">
-                <h1>Portofoolio Saya</h1>
+                <h1>Portofolio Saya</h1>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 rounded-5 shadow overvlow-hidden">
@@ -126,6 +126,41 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <!-- From -->
+    <div id="kontak" class="vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col mx-auto">
+                    <form class="p-5 mb-3 bg-body-tertiary rounded-5">
+                        <h1 class="display-5 fw-bold">Kontak Saya</h1>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="p-3 mb-2 bg-body-tertiary rounded-5 text-center">
+        <p class="mb-0">Copyright &copy; 2026 Fiqih Badrian. All rights reserved.</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
