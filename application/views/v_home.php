@@ -62,7 +62,7 @@
                                         <button class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" type="button">Download CV</button>
                                     </div>
                                     <div class="col-12 col-lg-4 text-lg-end">
-                                        <img src="<?= base_url('/public/assets/images/formal.png') ?>" alt="foto" class="img-fluid rounded-5">
+                                        <img src="<?= base_url('/public/assets/images/logo.png') ?>" alt="foto" class="img-fluid rounded-5">
                                     </div>
                                 </div>
                             </div>
@@ -156,6 +156,81 @@
             </div>
         </div>
     </div>
+
+
+    <!-- FORM -->
+    <!-- Awal Rencana -->
+    <section id="rencana">
+        <div class="container-fluid py-5">
+            <form action="<?= base_url('wisata/index#rencana') ?>" method="post">
+                <div class="row justify-content-center">
+                    <h2>Rencanakan Perjalanan</h2>
+                    <div class="col-md-4 mt-4">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Budget</label>
+                            <input type="text" class="form-control" id="budget"
+                                name="budget"
+                                placeholder="Berapa Bugdet Perjalanan anda ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Jumlah Hari</label>
+                            <input type="number" class="form-control"
+                                id="jumlah_hari" name="jumlah_hari"
+                                placeholder="Berapa Lama Perjalanan anda ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Jumlah Orang</label>
+                            <input type="number" class="form-control"
+                                id="jumlah_orang" name="jumlah_orang"
+                                placeholder="Berapa Orang Perjalanan anda ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Jenis Wisata</label>
+                            <select class="form-select" aria-label="Default select example" name="jenis_wisata"
+                                id="jenis_wisata">
+                                <option value="">Pilih Jenis Wisata</option>
+                                <option value="Alam">Alam</option>
+                                <option value="Keluarga">Keluarga</option>
+                                <option value="Edukasi">Edukasi</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary btn-md" type="submit"
+                                style="background-color: #071c53">Simpan
+                                Rencana</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Akhir Rencana -->
+
+
+    <!-- OUTPUT -->
+    <section id="output">
+        <div class="row justify-content-center mb-6">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header text-white" style="background-color:#071c53;">
+                        <h5 class="mb-0">Output Rencana Perjalanan</h5>
+                    </div>
+                    <div class="card-body">
+                        <?php if (
+                            !empty($budget) && !empty($hari) &&
+                            !empty($orang) && !empty($jenis)
+                        ) { ?>
+                            <p><b>Budget:</b> Rp <?= number_format($budget);
+                                                    ?></p>
+                            <p><b>Jumlah Hari:</b> <?= $hari; ?> hari</p>
+                            <p><b>Jumlah Orang:</b> <?= $orang; ?> Orang</p>
+                            <p><b>Jenis Wisata:</b> <?= $jenis; ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Footer -->
