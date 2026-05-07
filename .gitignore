@@ -7,7 +7,7 @@ yarn-error.log
 .env
 .env.local
 .env.*.local
-/application/config/database.php
+application/config/database.php
 
 # IDE
 .vscode/
