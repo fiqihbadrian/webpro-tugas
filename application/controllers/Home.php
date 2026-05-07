@@ -9,11 +9,16 @@ class Home extends CI_Controller
 
 	public function index()
 	{
+
+		$this->load->model('m_wisata'); // untuk memanggil model m_wisata.php
+
+
 		$data = [
 			'budget' => $this->input->post('budget'),
 			'hari' => $this->input->post('jumlah_hari'),
 			'orang' => $this->input->post('jumlah_orang'),
-			'jenis' => $this->input->post('jenis_wisata')
+			'jenis' => $this->input->post('jenis_wisata'),
+			'wisata' => $this->m_wisata->get_all()
 		];
 		$this->load->view('v_home', $data); // untuk menampilkan halaman v_home.php
 	}
