@@ -38,6 +38,14 @@
                     </li>
 
                 </ul>
+                <div class="d-flex align-items-center gap-2 me-lg-3 mt-3 mt-lg-0">
+                    <a href="<?= base_url('login') ?>" class="btn btn-outline-primary rounded-pill px-4">
+                        Login
+                    </a>
+                    <a href="<?= base_url('login/register') ?>" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                        Register
+                    </a>
+                </div>
                 <form class="d-flex mt-2 mt-lg-0" role="search">
                     <input class="form-control me-2 rounded-5" type="search" placeholder="Search" aria-label="Search" />
                     <button class="btn btn-outline-success rounded-pill px-3" type="submit">Search</button>
@@ -52,6 +60,12 @@
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <?php if ($this->session->flashdata('success')) : ?>
+                        <div class="app-alert alert alert-success mb-4" role="alert">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <?= $this->session->flashdata('success'); ?>
+                        </div>
+                    <?php endif; ?>
                     <section class="jumbotron">
                         <div class="p-5 mb-4 bg-body-tertiary rounded-5">
                             <div class="container-fluid py-5">
@@ -97,7 +111,7 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 rounded-5 shadow overvlow-hidden">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
+                    <img src="<?= base_url('public/assets/images/logo.png'); ?>" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body ">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -107,7 +121,7 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 rounded-5 shadow overvlow-hidden">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
+                    <img src="<?= base_url('public/assets/images/logo.png'); ?>" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -117,7 +131,7 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 rounded-5 shadow overvlow-hidden">
-                    <img src="https://avatars.githubusercontent.com/u/76670473?s=400&u=643ccd226e649eb02d4a763a9aea70123e588c37&v=4" class="card-img-top rounded-top-5" alt="hahaha">
+                    <img src="<?= base_url('public/assets/images/logo.png'); ?>" class="card-img-top rounded-top-5" alt="hahaha">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -162,7 +176,7 @@
     <!-- Awal Rencana -->
     <section id="rencana">
         <div class="container-fluid py-5">
-            <form action="<?= base_url('wisata/index#rencana') ?>" method="post">
+            <form action="<?= base_url('home/index#rencana') ?>" method="post">
                 <div class="row justify-content-center">
                     <h2>Rencanakan Perjalanan</h2>
                     <div class="col-md-4 mt-4">
@@ -232,6 +246,32 @@
         </div>
     </section>
 
+    <!-- Riwayat Perjalanan -->
+    <section id="riwayat">
+        <div class="container">
+            <div class="row">
+                <h1>Riwayat Perjalanan</h1>
+                <table>
+                    <tr>
+                        <th>Budget</th>
+                        <th>Jumlah Hari</th>
+                        <th>Jumlah Orang</th>
+                        <th>Jenis Wisata</th>
+                    </tr>
+                    <?php foreach ($wisata as $w) { ?>
+                        <tr>
+                            <td><?= $w->id; ?></td>
+                            <td>Rp <?= number_format($w->budget); ?></td>
+                            <td><?= $w->hari; ?> hari</td>
+                            <td><?= $w->orang; ?> Orang</td>
+                            <td><?= $w->jenis; ?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <div class="p-3 mb-2 bg-body-tertiary rounded-5 text-center">
@@ -239,6 +279,18 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.app-alert').forEach(function(alertElement) {
+                setTimeout(function() {
+                    alertElement.classList.add('fade-out');
+                    setTimeout(function() {
+                        alertElement.remove();
+                    }, 350);
+                }, 3000);
+            });
+        });
+    </script>
 </body>
 
 </html>
