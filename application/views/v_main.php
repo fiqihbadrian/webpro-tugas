@@ -1,5 +1,4 @@
 <!-- Main Content -->
-<main class="main-content">
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-actions ms-auto">
@@ -50,7 +49,7 @@
                         <i class="bi bi-arrow-up"></i> 12%
                     </div>
                 </div>
-                <div class="stat-value" id="totalOrders"><?php echo $this->session->userdata('total_users'); ?></div>
+                <div class="stat-value" id="totalOrders"><?php echo isset($total_users) ? number_format($total_users) : number_format($this->session->userdata('total_users')); ?></div>
                 <div class="stat-label">Total Users</div>
                 <div class="stat-footer">
                     <i class="bi bi-clock"></i>
@@ -67,7 +66,7 @@
                         <i class="bi bi-arrow-up"></i> 8.5%
                     </div>
                 </div>
-                <div class="stat-value" id="totalRevenue"><?php echo $this->session->userdata('total_wisata'); ?></div>
+                <div class="stat-value" id="totalRevenue"><?php echo isset($total_wisata) ? number_format($total_wisata) : number_format($this->session->userdata('total_wisata')); ?></div>
                 <div class="stat-label">Data Wisata</div>
                 <div class="stat-footer">
                     <i class="bi bi-graph-up"></i>
@@ -164,10 +163,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{latest_wisata}}
+                        <?php if (!empty($latest_wisata) && is_array($latest_wisata) || is_object($latest_wisata)) : ?>
+                            <?php foreach ($latest_wisata as $wisata) : ?>
+                                <tr>
+                                    <td><strong>#WST-<?php echo htmlspecialchars($wisata->id, ENT_QUOTES, 'UTF-8'); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($wisata->budget, ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($wisata->hari, ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($wisata->orang, ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($wisata->jenis, ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td>-</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="#" class="action-icon-btn" title="View"><i class="bi bi-eye"></i></a>
+                                            <a href="#" class="action-icon-btn" title="Edit"><i class="bi bi-pencil"></i></a>
+                                            <a href="#" class="action-icon-btn" title="Delete"><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr><td colspan="7" class="text-center">No data available</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</main>

@@ -30,3 +30,6 @@ $isKategoriActive = strpos($requestUri, 'kategori') !== false;
             </li>
         </ul>
     </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">

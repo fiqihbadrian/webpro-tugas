@@ -11,4 +11,7 @@
     <link href="<?= base_url('public/assets/assets/icons/fontawesome/css/brands.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/assets/assets/icons/fontawesome/css/solid.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('public/assets/assets/css/style.css') ?>">
+    <!-- Data table -->
+<link rel="stylesheet"
+href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.min.css">
 </head>
