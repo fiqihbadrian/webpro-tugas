@@ -52,8 +52,7 @@
                 </form>
             </div>
         </div>
-    </nav>
-
+</nav>
 
     <!-- Jumbotron -->
     <div id="beranda" class="vh-100 d-flex align-items-center pt-5">

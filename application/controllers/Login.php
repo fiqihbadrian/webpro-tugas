@@ -56,8 +56,8 @@ class Login extends CI_Controller
                     'login' => TRUE
                 ];
                 $this->session->set_userdata($data_session);
-                $this->session->set_flashdata('success', 'Login berhasil!');
-                redirect('home');
+                // $this->session->set_flashdata('success', 'Login berhasil!');
+                redirect('dashboard');
             } else {
                 $this->session->set_flashdata(
                     'error',

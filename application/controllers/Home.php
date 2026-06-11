@@ -27,4 +27,6 @@ class Home extends CI_Controller
 	{
 		$this->load->view('v_profil'); // untuk menampilkan halaman v_profile.php
 	}
+
+	
 }
