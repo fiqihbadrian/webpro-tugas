@@ -3,6 +3,7 @@
 $requestUri = strtolower($_SERVER['REQUEST_URI'] ?? '');
 $isDashboardActive = strpos($requestUri, 'dashboard') !== false;
 $isKategoriActive = strpos($requestUri, 'kategori') !== false;
+$isDestinasiActive = strpos($requestUri, 'destinasi') !== false;
 ?>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -26,6 +27,12 @@ $isKategoriActive = strpos($requestUri, 'kategori') !== false;
                 <a href="<?= base_url('kategori') ?>" class="nav-link<?= $isKategoriActive ? ' active' : '' ?>">
                     <i class="bi bi-receipt"></i>
                     <span>Kategori</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= base_url('destinasi') ?>" class="nav-link<?= $isDestinasiActive ? ' active' : '' ?>">
+                    <i class="bi bi-receipt"></i>
+                    <span>Destinasi</span>
                 </a>
             </li>
         </ul>

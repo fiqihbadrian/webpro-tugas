@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller
 
         $this->load->view('v_header');
         $this->load->view('v_navbar');
-        $this->load->view('v_main', $data);
+        $this->load->view('dashboard/v_main', $data);
         $this->load->view('v_footer');
     }
 }
