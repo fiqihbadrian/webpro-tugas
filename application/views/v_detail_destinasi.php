@@ -89,9 +89,16 @@
                     </h5>
                 </div>
                 <div class="card-body text-center">
-                    <img src="<?= base_url('assets/upload/' . $destinasi->foto) ?>"
-                        class="img-fluid rounded shadow-sm"
-                        alt="<?= $destinasi->nama_destinasi ?>">
+                    <?php if (!empty($destinasi->foto) && file_exists('./public/assets/upload/' . $destinasi->foto)): ?>
+                        <img src="<?= base_url('public/assets/upload/' . $destinasi->foto) ?>"
+                            class="img-fluid rounded shadow-sm"
+                            alt="<?= $destinasi->nama_destinasi ?>">
+                    <?php else: ?>
+                        <div class="alert alert-info">
+                            <i class="fas fa-image fa-3x mb-3"></i>
+                            <p>Foto belum tersedia. Upload foto melalui halaman edit.</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

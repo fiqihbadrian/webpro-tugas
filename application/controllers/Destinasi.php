@@ -14,7 +14,7 @@ class Destinasi extends CI_Controller
         $data['latest_wisata'] = array_slice($data['destinasi'], 0, 5); // 5 latest
         $this->load->view('v_header');
         $this->load->view('v_navbar');
-        $this->load->view('destinasi/v_destinasi', $data);
+        $this->load->view('v_destinasi', $data);
         $this->load->view('v_footer');
     }
     public function tambah()
@@ -29,12 +29,12 @@ class Destinasi extends CI_Controller
         
         $this->load->view('v_header');
         $this->load->view('v_navbar');
-        $this->load->view('destinasi/v_tambah_destinasi', $data);
+        $this->load->view('v_tambah_destinasi', $data);
         $this->load->view('v_footer');
     }
     public function simpan()
     {
-        $config['upload_path'] = './assets/upload/';
+        $config['upload_path'] = './public/assets/upload/';
         $config['allowed_types'] = 'jpg|jpeg|png|webp';
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
@@ -51,7 +51,7 @@ class Destinasi extends CI_Controller
             'jam_operasional' => $this->input->post('jam_operasional'),
             'foto' => $upload['file_name'],
             'link_maps' => $this->input->post('link_maps'),
-            'id_destinasi' => $this->input->post('id_destinasi')
+            'id_kategori' => $this->input->post('id_kategori')
         ];
         $this->M_destinasi->insert($data);
         $this->session->set_flashdata(
@@ -73,7 +73,7 @@ class Destinasi extends CI_Controller
         
         $this->load->view('v_header');
         $this->load->view('v_navbar');
-        $this->load->view('destinasi/v_detail_destinasi', $data);
+        $this->load->view('v_detail_destinasi', $data);
         $this->load->view('v_footer');
     }
     public function edit($id)
@@ -93,7 +93,7 @@ class Destinasi extends CI_Controller
         
         $this->load->view('v_header');
         $this->load->view('v_navbar');
-        $this->load->view('destinasi/v_edit_destinasi', $data);
+        $this->load->view('v_edit_destinasi', $data);
         $this->load->view('v_footer');
     }
     public function update($id)
@@ -109,10 +109,10 @@ class Destinasi extends CI_Controller
             'harga_tiket' => $this->input->post('harga_tiket'),
             'jam_operasional' => $this->input->post('jam_operasional'),
             'link_maps' => $this->input->post('link_maps'),
-            'id_destinasi' => $this->input->post('id_destinasi')
+            'id_kategori' => $this->input->post('id_kategori')
         ];
         if (!empty($_FILES['foto']['name'])) {
-            $config['upload_path'] = './assets/upload/';
+            $config['upload_path'] = './public/assets/upload/';
             $config['allowed_types'] = 'jpg|jpeg|png|webp';
             $config['encrypt_name'] = TRUE;
             $this->load->library('upload', $config);
@@ -120,9 +120,9 @@ class Destinasi extends CI_Controller
                 $upload = $this->upload->data();
                 if (
                     !empty($destinasi->foto) &&
-                    file_exists('./assets/upload/' . $destinasi->foto)
+                    file_exists('./public/assets/upload/' . $destinasi->foto)
                 ) {
-                    unlink('./assets/upload/' . $destinasi->foto);
+                    unlink('./public/assets/upload/' . $destinasi->foto);
                 }
                 $data['foto'] = $upload['file_name'];
             }
@@ -142,9 +142,9 @@ class Destinasi extends CI_Controller
         }
         if (
             !empty($destinasi->foto) &&
-            file_exists('./assets/upload/' . $destinasi->foto)
+            file_exists('./public/assets/upload/' . $destinasi->foto)
         ) {
-            unlink('./assets/upload/' . $destinasi->foto);
+            unlink('./public/assets/upload/' . $destinasi->foto);
         }
         $this->M_destinasi->delete($id);
         $this->session->set_flashdata(

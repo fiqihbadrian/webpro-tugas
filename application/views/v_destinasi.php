@@ -44,7 +44,13 @@
                         <tr>
                             <td><strong><?= $no++; ?></strong></td>
                             <td>
-                                <img src="<?= base_url('assets/upload/' . $d->foto) ?>" width="80" class="img-thumbnail">
+                                <?php if (!empty($d->foto) && file_exists('./public/assets/upload/' . $d->foto)): ?>
+                                    <img src="<?= base_url('public/assets/upload/' . $d->foto) ?>" width="80" class="img-thumbnail">
+                                <?php else: ?>
+                                    <div class="bg-light text-center p-2" style="width:80px; height:80px; display:flex; align-items:center; justify-content:center;">
+                                        <i class="fas fa-image text-muted"></i>
+                                    </div>
+                                <?php endif; ?>
                             </td>
                             <td><?= $d->nama_destinasi; ?></td>
                             <td>
