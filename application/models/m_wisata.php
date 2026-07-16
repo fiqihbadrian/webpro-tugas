@@ -6,6 +6,10 @@ class M_wisata extends CI_Model
      {
          return $this->db->get('tb_contoh')->result();
      }
+     public function insert($data)
+     {
+         return $this->db->insert('tb_contoh', $data);
+     }
  }
 
 ?>

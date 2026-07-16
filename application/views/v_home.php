@@ -1,11 +1,13 @@
 <?php
 $assetImagePath = base_url('public/assets/assets/images/');
 $navbarLogo = $assetImagePath . 'small-logo.png';
-$heroImage = $assetImagePath . 'panelry-logo.png';
+$heroImage = $assetImagePath . 'hero.png';
+$heroImage2 = $assetImagePath . 'hero2.png';
+$heroImage3 = $assetImagePath . 'hero3.png';
 $portfolioImage = $assetImagePath . 'icon-logo.png';
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en">    
 
 <head>
     <meta charset="utf-8">
@@ -14,98 +16,33 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        body {
-            padding-top: 88px;
-            background: #f8fafc;
-            color: #1f2937;
+        body { padding-top: 88px; background: #f8fafc; color: #1f2937; }
+        .section-block { padding: 4rem 0; }
+
+        .hero-stack { position: relative; width: 340px; max-width: 100%; height: 260px; }
+        .hero-stack img { position: absolute; width: 100%; max-width: 320px; border-radius: .75rem; object-fit: cover; box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.12); transition: transform .28s ease, opacity .6s ease; }
+        .hero-img-1 { left: -12px; top: 36px; z-index: 2; transform: rotate(-4deg) scale(.95); }
+        .hero-img-2 { left: 50%; top: -24px; transform: translateX(-50%) scale(1.1); z-index: 5; }
+        .hero-img-3 { right: -12px; top: 36px; z-index: 1; transform: rotate(4deg) scale(.95); }
+        .hero-stack:hover .hero-img-2 { transform: translateX(-50%) translateY(-8px) scale(1.12); }
+
+        .fade-out { opacity: 0; }
+        .fade-in { opacity: 1; }
+
+        .hover-button { cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+
+        .portfolio-image { height: 210px; object-fit: cover; }
+
+        .app-alert { transition: opacity .35s ease, transform .35s ease; }
+        .app-alert.fade-out { opacity: 0; transform: translateY(-8px); }
+
+        .hover-button {
+            background-color: #183889;
+            transition: all 0.3s ease;
         }
 
-        .section-block {
-            padding: 4rem 0;
-        }
-
-        .section-card,
-        .soft-card {
-            border: 0;
-            border-radius: 1.5rem;
-            box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.08);
-        }
-
-        .hero-image,
-        .portfolio-image {
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .hero-image {
-            max-width: 360px;
-            aspect-ratio: 1 / 1;
-            border-radius: 1.5rem;
-            background: #fff;
-        }
-
-        .portfolio-image {
-            height: 210px;
-        }
-
-        .hero-copy,
-        .section-title {
-            text-align: left;
-        }
-
-        .section-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .card-img-fixed {
-            overflow: hidden;
-        }
-
-        .card-img-fixed img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-        }
-
-        .portfolio-link {
-            display: block;
-            height: 100%;
-            color: inherit;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .portfolio-link:hover {
-            transform: translateY(-4px);
-            color: inherit;
-        }
-
-        .portfolio-link:hover .soft-card {
-            box-shadow: 0 1.25rem 3rem rgba(15, 23, 42, 0.14);
-        }
-
-        .history-table {
-            margin-bottom: 0;
-        }
-
-        .history-table thead th {
-            background: #0f172a;
-            color: #fff;
-            border: 0;
-        }
-
-        .history-table th,
-        .history-table td {
-            vertical-align: middle;
-        }
-
-        .app-alert {
-            transition: opacity 0.35s ease, transform 0.35s ease;
-        }
-
-        .app-alert.fade-out {
-            opacity: 0;
-            transform: translateY(-8px);
+        .hover-button:hover {
+            background-color: #1c3fa3;
         }
     </style>
 </head>
@@ -128,11 +65,11 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Portofolio
+                            Wisata
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#portofolio">Project</a></li>
-                            <li><a class="dropdown-item" href="#sertifikat">Sertifikat</a></li>
+                            <li><a class="dropdown-item" href="#destinasi">Alam</a></li>
+                            <li><a class="dropdown-item" href="#destinasi">Budaya</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -144,7 +81,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                     <a href="<?= base_url('login') ?>" class="btn btn-outline-primary rounded-pill px-4">
                         Login
                     </a>
-                    <a href="<?= base_url('login/register') ?>" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                    <a href="<?= base_url('login/register') ?>" class="btn btn-primary rounded-pill px-4 shadow-lg">
                         Register
                     </a>
                 </div>
@@ -165,20 +102,24 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                     <?= $this->session->flashdata('success'); ?>
                 </div>
             <?php endif; ?>
-            <div class="row align-items-center g-4 section-card bg-white p-4 p-lg-5">
+            <div class="row align-items-center g-4 section-card bg-white p-4 p-lg-5 rounded-4 shadow-lg overflow-hidden">
                 <div class="col-12 col-lg-7">
                     <div class="hero-copy">
-                        <span class="badge text-bg-success rounded-pill mb-3 px-3 py-2">Portfolio Personal</span>
-                        <h1 class="display-5 fw-bold mb-3">Fiqih Badrian</h1>
-                        <p class="fs-5 text-secondary mb-4">Tampilan home ini sudah dirapikan dengan layout kiri yang lebih tegas, gambar yang ukurannya seragam, dan jarak antar bagian yang lebih stabil di semua ukuran layar.</p>
+                        <span class="badge text-bg-success rounded-pill mb-3 px-3 py-2">Wisata Indonesia</span>
+                        <h1 class="display-5 fw-bold mb-3">Destinasi Wisata Indonesia</h1>
+                        <p class="fs-5 text-secondary mb-4">Temukan keindahan alam dan budaya Indonesia melalui destinasi wisata yang kami pilihkan untuk Anda.</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <a href="#portofolio" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm">Lihat Portofolio</a>
-                            <a href="#kontak" class="btn btn-outline-dark btn-lg rounded-pill px-4">Hubungi Saya</a>
+                            <a href="#portofolio" class="btn btn-primary btn-lg rounded-pill px-4 shadow-lg">Lihat Destinasi</a>
+                            <a href="#kontak" class="btn btn-outline-dark btn-lg rounded-pill px-4">Hubungi Kami</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 text-lg-end">
-                    <img src="<?= $heroImage; ?>" alt="foto profil" class="hero-image shadow-sm">
+                    <div class="hero-stack ms-lg-auto" id="heroStack">
+                        <img src="<?= $heroImage; ?>" class="hero-img-1" id="img1">
+                        <img src="<?= $heroImage2; ?>" class="hero-img-2" id="img2">
+                        <img src="<?= $heroImage3; ?>" class="hero-img-3" id="img3">
+                    </div>
                 </div>
             </div>
         </div>
@@ -187,11 +128,11 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
     <!-- About -->
     <section id="tentang" class="section-block">
         <div class="container">
-            <div class="section-card bg-white p-4 p-lg-5">
+            <div class="section-card bg-white p-4 p-lg-5 rounded-4 shadow-lg overflow-hidden">
                 <div class="row justify-content-start">
                     <div class="col-12 col-lg-8">
-                        <h2 class="display-6 fw-bold section-title">About Me</h2>
-                        <p class="fs-5 text-secondary mb-0">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                        <h2 class="display-6 fw-bold section-title">Tentang Kami</h2>
+                        <p class="fs-5 text-secondary mb-0">Kami adalah tim profesional yang berdedikasi untuk memberikan pengalaman wisata terbaik di Indonesia. Dengan pengetahuan mendalam tentang berbagai destinasi, kami siap membantu Anda menemukan tempat wisata yang paling sesuai dengan kebutuhan dan minat Anda.</p>
                     </div>
                 </div>
             </div>
@@ -199,11 +140,11 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
     </section>
 
     <!-- Portofolio -->
-    <section id="portofolio" class="section-block pt-0">
+    <section id="destinasi" class="section-block pt-0">
         <div class="container">
             <div class="row g-4">
                 <div class="col-12">
-                    <h2 class="display-6 fw-bold section-title">Portofolio Saya</h2>
+                    <h2 class="display-6 fw-bold section-title">Destinasi Wisata</h2>
                 </div>
                 <?php if (!empty($latest_wisata)) : ?>
                     <?php foreach ($latest_wisata as $index => $wisataItem) : ?>
@@ -217,26 +158,39 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                             : $portfolioImage;
                         ?>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <a href="<?= base_url('home/detail_portofolio/' . $wisataItem->id_destinasi); ?>" class="portfolio-link" aria-label="Lihat detail <?= htmlspecialchars($portfolioTitle, ENT_QUOTES, 'UTF-8'); ?>">
-                                <div class="card h-100 rounded-4 soft-card overflow-hidden">
-                                    <div class="card-img-fixed">
-                                        <img src="<?= $portfolioImageUrl; ?>" class="portfolio-image" alt="<?= htmlspecialchars($portfolioTitle, ENT_QUOTES, 'UTF-8'); ?>">
-                                    </div>
-                                    <div class="card-body text-start p-4">
-                                        <h5 class="card-title fw-bold"><?= htmlspecialchars($portfolioTitle, ENT_QUOTES, 'UTF-8'); ?></h5>
-                                        <p class="card-text text-secondary mb-3"><?= htmlspecialchars($portfolioDescription, ENT_QUOTES, 'UTF-8'); ?></p>
-                                        <div class="d-flex flex-wrap gap-2 align-items-center">
-                                            <span class="badge text-bg-success rounded-pill"><?= htmlspecialchars($wisataItem->nama_kategori ?? 'Wisata', ENT_QUOTES, 'UTF-8'); ?></span>
-                                            <span class="text-secondary small">Rp <?= number_format($wisataItem->harga_tiket, 0, ',', '.'); ?></span>
-                                        </div>
-                                    </div>
+                            <div class="card h-100 rounded-4 soft-card overflow-hidden shadow-lg">
+                                <div class="card-img-fixed">
+                                    <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>"
+                                       class="d-block text-decoration-none"
+                                       aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                        <img src="<?= $portfolioImageUrl; ?>" class="w-100 h-100 object-fit-cover" alt="<?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                    </a>
                                 </div>
-                            </a>
+                                <div class="card-body text-start p-4">
+                                    <h5 class="card-title fw-bold">
+                                        <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>" class="text-decoration-none text-dark"
+                                           aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                            <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-secondary mb-3"><?= htmlspecialchars($wisataItem->deskripsi, ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                                        <span class="badge text-bg-success rounded-pill"><?= htmlspecialchars($wisataItem->nama_kategori ?? 'Wisata', ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <span class="text-secondary small">Rp <?= number_format($wisataItem->harga_tiket, 0, ',', '.'); ?></span>
+                                    </div>
+                                    <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>"
+                                       class="btn btn-sm mt-3 rounded-pill hover-button text-white"
+                                       style="background-color: #2f58c2;"
+                                       aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                        Selengkapnya
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <div class="col-12">
-                        <div class="alert alert-warning mb-0">Data portofolio belum tersedia di database.</div>
+                        <div class="alert alert-warning mb-0">Data destinasi belum tersedia di database.</div>
                     </div>
                 <?php endif; ?>
             </div>
@@ -249,7 +203,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8 mx-auto">
-                    <form class="section-card bg-white p-4 p-lg-5 text-start">
+                    <form class="section-card bg-white p-4 p-lg-5 text-start rounded-4 shadow-lg overflow-hidden">
                         <h2 class="display-6 fw-bold section-title text-start">Kontak Saya</h2>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -280,7 +234,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
             <form action="<?= base_url('home/index#rencana') ?>" method="post">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8 mx-auto">
-                        <div class="section-card bg-white p-4 p-lg-5 text-start">
+                        <div class="section-card bg-white p-4 p-lg-5 text-start shadow-lg">
                             <h2 class="display-6 fw-bold section-title text-start">Rencanakan Perjalanan</h2>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Budget</label>
@@ -329,7 +283,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         <div class="container">
             <div class="row justify-content-start">
                 <div class="col-12 col-lg-8 mx-auto">
-                    <div class="card section-card text-center">
+                    <div class="card section-card text-center rounded-4 shadow-lg">
                         <div class="card-header text-white text-center" style="background-color:#071c53;">
                             <h5 class="mb-0">Output Rencana Perjalanan</h5>
                         </div>
@@ -356,7 +310,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-card bg-white p-4 p-lg-5">
+                    <div class="section-card bg-white p-4 p-lg-5 rounded-4 shadow-lg overflow-hidden">
                         <h2 class="display-6 fw-bold section-title">Riwayat Perjalanan</h2>
                         <div class="table-responsive">
                             <table class="table table-hover history-table align-middle">
@@ -395,7 +349,58 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
             <p class="mb-0">Copyright &copy; 2026 Fiqih Badrian. All rights reserved.</p>
         </div>
     </div>
+    <script>
+    const images = [
+        "<?= $heroImage; ?>",
+        "<?= $heroImage2; ?>",
+        "<?= $heroImage3; ?>"
+    ];
 
+    let index = 0;
+    let intervalTime = 3000;
+    let slider;
+
+    const img1 = document.getElementById("img1");
+    const img2 = document.getElementById("img2");
+    const img3 = document.getElementById("img3");
+    const stack = document.getElementById("heroStack");
+
+    function updateImages() {
+        img1.src = images[index % images.length];
+        img2.src = images[(index + 1) % images.length];
+        img3.src = images[(index + 2) % images.length];
+    }
+
+    function nextSlide() {
+    img1.classList.add("fade-out");
+    img2.classList.add("fade-out");
+    img3.classList.add("fade-out");
+
+    setTimeout(() => {
+        index++;
+
+        updateImages();
+
+        img1.classList.remove("fade-out");
+        img2.classList.remove("fade-out");
+        img3.classList.remove("fade-out");
+
+    }, 300);
+}
+
+    function startSlider(speed = intervalTime) {
+        clearInterval(slider);
+        slider = setInterval(nextSlide, speed);
+    }
+
+    startSlider();
+
+    stack.addEventListener("click", () => {
+    nextSlide();
+    
+    startSlider(intervalTime);
+});
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -407,6 +412,15 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                     }, 350);
                 }, 3000);
             });
+            // Prevent browser form-resubmission prompt on reload (PRG client-side fallback)
+            if (window.history && window.history.replaceState) {
+                try {
+                    // Replace current history entry so reload won't attempt to repost form data
+                    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+                } catch (e) {
+                    // ignore
+                }
+            }
         });
     </script>
 </body>

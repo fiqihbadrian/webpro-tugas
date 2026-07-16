@@ -6,7 +6,7 @@ class Destinasi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_destinasi');
-        $this->load->model('M_destinasi');
+
     }
     public function index()
     {

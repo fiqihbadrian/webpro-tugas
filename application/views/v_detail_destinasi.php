@@ -1,106 +1,82 @@
-<div class="dashboard-content">
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
-            <div>
-                <h1>Detail Destinasi</h1>
-                <p>Informasi lengkap destinasi wisata.</p>
-            </div>
-            <div class="d-flex gap-2">
-                <a href="<?= base_url('destinasi') ?>" class="btn btn-outline-primary">
-                    <i class="fas fa-arrow-left"></i> Kembali
-                </a>
-                <a href="<?= base_url('destinasi/edit/' . $destinasi->id_destinasi)
-                            ?>" class="btn btn-warning">
-                    <i class="fas fa-edit"></i> Edit
+<?php
+$assetImagePath = base_url('public/assets/assets/images/');
+$fallbackImage = $assetImagePath . 'icon-logo.png';
+$navbarLogo = $assetImagePath . 'small-logo.png';
+$detailImage = !empty($destinasi->foto) && file_exists('./public/assets/upload/' . $destinasi->foto)
+    ? base_url('public/assets/upload/' . $destinasi->foto)
+    : $fallbackImage;
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= htmlspecialchars($destinasi->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light text-dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center py-0" href="<?= base_url(); ?>">
+                <img class="img-fluid object-fit-contain" width="74" height="74" src="<?= $navbarLogo; ?>" alt="Logo">
+            </a>
+            <div class="ms-auto">
+                <a href="<?= base_url(); ?>" class="btn btn-outline-dark rounded-pill px-4">
+                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Home
                 </a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- Informasi Destinasi -->
-        <div class="col-xl-8">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">
-                        <i class="fas fa-map-marker-alt me-2"></i>
-                        Informasi Destinasi
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <table class="table-custom" style="color:aliceblue; padding:20px;">
-                        <tr>
-                            <th width="220">Nama Destinasi</th>
-                            <td><?= $destinasi->nama_destinasi ?></td>
-                        </tr>
-                        <tr>
-                            <th>Kategori</th>
-                            <td>
-                                <span class="badge bg-primary">
-                                    <?= $destinasi->nama_kategori ?>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Harga Tiket</th>
-                            <td>
-                                Rp <?= number_format(
-                                        $destinasi->harga_tiket,
-                                        0,
-                                        ',',
-                                        '.'
-                                    ) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Jam Operasional</th>
-                            <td><?= $destinasi->jam_operasional ?></td>
-                        </tr>
-                        <tr>
-                            <th>Alamat</th>
-                            <td><?= $destinasi->alamat ?></td>
-                        </tr>
-                        <tr>
-                            <th>Deskripsi</th>
-                            <td><?= nl2br($destinasi->deskripsi) ?></td>
-                        </tr>
-                        <tr>
-                            <th>Google Maps</th>
-                            <td>
-                                <a href="<?= $destinasi->link_maps ?>"
-                                    target="_blank"
-                                    class="btn btn-primary btn-sm">
-                                    <i class="bi bi-geo-alt"></i>
-                                    Buka Maps
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- Foto -->
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5>
-                        <i class="fas fa-image"></i>
-                        Foto Destinasi
-                    </h5>
-                </div>
-                <div class="card-body text-center">
-                    <?php if (!empty($destinasi->foto) && file_exists('./public/assets/upload/' . $destinasi->foto)): ?>
-                        <img src="<?= base_url('public/assets/upload/' . $destinasi->foto) ?>"
-                            class="img-fluid rounded shadow-sm"
-                            alt="<?= $destinasi->nama_destinasi ?>">
-                    <?php else: ?>
-                        <div class="alert alert-info">
-                            <i class="fas fa-image fa-3x mb-3"></i>
-                            <p>Foto belum tersedia. Upload foto melalui halaman edit.</p>
+    </nav>
+
+    <main class="pt-5 mt-5 pb-5">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row g-4 align-items-stretch justify-content-start text-start">
+                <div class="col-12 col-lg-5">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                        <div class="ratio ratio-4x3">
+                            <img src="<?= $detailImage; ?>" class="w-100 h-100 object-fit-cover" alt="<?= htmlspecialchars($destinasi->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
-                    <?php endif; ?>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 p-4 p-lg-5 text-start">
+                        <span class="badge rounded-pill text-bg-success-subtle text-success-emphasis border border-success-subtle align-self-start mb-3 px-3 py-2 fs-6">
+                            <i class="bi bi-map"></i>
+                            <?= htmlspecialchars($destinasi->nama_kategori ?? 'Wisata', ENT_QUOTES, 'UTF-8'); ?>
+                        </span>
+                        <h1 class="display-6 fw-bold mb-3"><?= htmlspecialchars($destinasi->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?></h1>
+                        <p class="text-secondary mb-4"><?= nl2br(htmlspecialchars($destinasi->deskripsi, ENT_QUOTES, 'UTF-8')); ?></p>
+
+                        <div class="list-group list-group-flush mb-4 w-100">
+                            <div class="list-group-item px-0 d-flex justify-content-between align-items-start bg-transparent">
+                                <span class="fw-semibold text-dark">Alamat</span>
+                                <span class="text-end text-secondary ms-3"><?= htmlspecialchars($destinasi->alamat, ENT_QUOTES, 'UTF-8'); ?></span>
+                            </div>
+                            <div class="list-group-item px-0 d-flex justify-content-between align-items-start bg-transparent">
+                                <span class="fw-semibold text-dark">Jam Operasional</span>
+                                <span class="text-end text-secondary ms-3"><?= htmlspecialchars($destinasi->jam_operasional, ENT_QUOTES, 'UTF-8'); ?></span>
+                            </div>
+                            <div class="list-group-item px-0 d-flex justify-content-between align-items-start bg-transparent">
+                                <span class="fw-semibold text-dark">Harga Tiket</span>
+                                <span class="text-end text-secondary ms-3">Rp <?= number_format($destinasi->harga_tiket, 0, ',', '.'); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <?php if (!empty($destinasi->link_maps)) : ?>
+                                <a href="<?= $destinasi->link_maps; ?>" target="_blank" class="btn btn-success rounded-pill px-4">
+                                    <i class="bi bi-geo-alt me-1"></i> Buka Maps
+                                </a>
+                            <?php endif; ?>
+                            <a href="<?= base_url(); ?>" class="btn btn-outline-dark rounded-pill px-4">Kembali</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
