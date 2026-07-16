@@ -46,19 +46,19 @@ if (revenueChartElement) {
   let revenueChart = new Chart(revenueCtx, {
     type: "line",
     data: {
-      labels: ["6 AM", "9 AM", "12 PM", "3 PM", "6 PM", "9 PM", "12 AM"],
+      labels: ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
       datasets: [
         {
-          label: "Revenue",
-          data: [1200, 2800, 5400, 4200, 6800, 5600, 3400],
-          borderColor: "#FF6B35",
-          backgroundColor: "rgba(255, 107, 53, 0.1)",
+          label: "Pengunjung",
+          data: [12, 28, 54, 42, 68, 56, 34],
+          borderColor: "#2ECC71",
+          backgroundColor: "rgba(46, 204, 113, 0.1)",
           borderWidth: 3,
           fill: true,
           tension: 0.4,
           pointRadius: 5,
           pointHoverRadius: 7,
-          pointBackgroundColor: "#FF6B35",
+          pointBackgroundColor: "#2ECC71",
           pointBorderColor: "#fff",
           pointBorderWidth: 2,
         },
@@ -81,7 +81,7 @@ if (revenueChartElement) {
           displayColors: false,
           callbacks: {
             label: function (context) {
-              return "$" + context.parsed.y.toLocaleString();
+              return context.parsed.y + " pengunjung";
             },
           },
         },
@@ -95,9 +95,6 @@ if (revenueChartElement) {
           },
           ticks: {
             color: "#a0a4b8",
-            callback: function (value) {
-              return "$" + value / 1000 + "k";
-            },
           },
         },
         x: {
@@ -113,19 +110,23 @@ if (revenueChartElement) {
   });
 }
 
-// Order Status Chart
+// Kategori Wisata Donut Chart
 const orderStatusChartElement = document.getElementById("orderStatusChart");
 
 if (orderStatusChartElement) {
   const statusCtx = orderStatusChartElement.getContext("2d");
+  const labels = typeof kategoriLabels !== 'undefined' && kategoriLabels.length ? kategoriLabels : ["Alam", "Keluarga", "Edukasi", "Lainnya"];
+  const data = typeof kategoriData !== 'undefined' && kategoriData.length ? kategoriData : [40, 30, 20, 10];
+  const colors = typeof kategoriColors !== 'undefined' && kategoriColors.length ? kategoriColors : ["#2ECC71", "#3498DB", "#9B59B6", "#F39C12"];
+
   const orderStatusChart = new Chart(statusCtx, {
     type: "doughnut",
     data: {
-      labels: ["Delivered", "Delivering", "Preparing", "Pending"],
+      labels: labels,
       datasets: [
         {
-          data: [45, 25, 20, 10],
-          backgroundColor: ["#2ECC71", "#3498DB", "#9B59B6", "#F39C12"],
+          data: data,
+          backgroundColor: colors,
           borderWidth: 0,
           hoverOffset: 10,
         },
@@ -156,7 +157,9 @@ if (orderStatusChartElement) {
           padding: 12,
           callbacks: {
             label: function (context) {
-              return context.label + ": " + context.parsed + "%";
+              var total = context.dataset.data.reduce(function(a,b){return a+b},0);
+              var pct = total ? Math.round(context.parsed / total * 100) : 0;
+              return context.label + ": " + context.parsed + " (" + pct + "%)";
             },
           },
         },

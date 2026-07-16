@@ -3,33 +3,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
-	// Nama class harus sama dengan nama file
-	// Nama file harus diawali dengan huruf kapital
-	// cntrl+/ untuk komentar
 
 	public function index()
 	{
 		$this->load->model('m_wisata');
 		$this->load->model('M_destinasi');
 
-		// CEK apakah form disubmit
 		if ($this->input->post('budget')) {
 
-			$data_insert = [
-				'budget' => $this->input->post('budget'),
-				'hari'   => $this->input->post('jumlah_hari'),
-				'orang'  => $this->input->post('jumlah_orang'),
-				'jenis'  => $this->input->post('jenis_wisata'),
-			];
+    $data_insert = [
+        'budget' => $this->input->post('budget'),
+        'hari'   => $this->input->post('jumlah_hari'),
+        'orang'  => $this->input->post('jumlah_orang'),
+        'jenis'  => $this->input->post('jenis_wisata'),
+    ];
 
-			// simpan ke database
-			$this->m_wisata->insert($data_insert);
+    $this->m_wisata->insert($data_insert);
 
-			// redirect ke riwayat
-			redirect('home/index#riwayat');
-		}
+    $this->session->set_flashdata('hasil', $data_insert);
 
-		// ambil data untuk ditampilkan
+    redirect('home/index#output');
+}
+
+
 		$data = [
 			'budget' => '',
 			'hari' => '',
@@ -38,6 +34,7 @@ class Home extends CI_Controller
 			'wisata' => $this->m_wisata->get_all(),
 			'latest_wisata' => $this->M_destinasi->get_all()
 		];
+		$data['hasil'] = $this->session->flashdata('hasil');
 
 		$this->load->view('v_home', $data);
 	}
@@ -56,7 +53,7 @@ class Home extends CI_Controller
 
 	public function profile()
 	{
-		$this->load->view('v_profil'); // untuk menampilkan halaman v_profile.php
+		$this->load->view('v_profile');
 	}
 
 }

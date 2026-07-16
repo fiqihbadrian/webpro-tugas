@@ -30,7 +30,6 @@ class Login extends CI_Controller
         );
         $data = [
             'nama_lengkap' => $nama_lengkap,
-
             'username' => $username,
             'password' => $password
         ];

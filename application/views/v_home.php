@@ -7,7 +7,7 @@ $heroImage3 = $assetImagePath . 'hero3.png';
 $portfolioImage = $assetImagePath . 'icon-logo.png';
 ?>
 <!doctype html>
-<html lang="en">    
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -16,25 +16,84 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        body { padding-top: 88px; background: #f8fafc; color: #1f2937; }
-        .section-block { padding: 4rem 0; }
+        body {
+            padding-top: 88px;
+            background: #f8fafc;
+            color: #1f2937;
+        }
 
-        .hero-stack { position: relative; width: 340px; max-width: 100%; height: 260px; }
-        .hero-stack img { position: absolute; width: 100%; max-width: 320px; border-radius: .75rem; object-fit: cover; box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.12); transition: transform .28s ease, opacity .6s ease; }
-        .hero-img-1 { left: -12px; top: 36px; z-index: 2; transform: rotate(-4deg) scale(.95); }
-        .hero-img-2 { left: 50%; top: -24px; transform: translateX(-50%) scale(1.1); z-index: 5; }
-        .hero-img-3 { right: -12px; top: 36px; z-index: 1; transform: rotate(4deg) scale(.95); }
-        .hero-stack:hover .hero-img-2 { transform: translateX(-50%) translateY(-8px) scale(1.12); }
+        .section-block {
+            padding: 4rem 0;
+        }
 
-        .fade-out { opacity: 0; }
-        .fade-in { opacity: 1; }
+        .hero-stack {
+            position: relative;
+            width: 340px;
+            max-width: 100%;
+            height: 260px;
+        }
 
-        .hover-button { cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+        .hero-stack img {
+            position: absolute;
+            width: 100%;
+            max-width: 320px;
+            border-radius: .75rem;
+            object-fit: cover;
+            box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .12);
+            transition: transform .28s ease, opacity .6s ease;
+        }
 
-        .portfolio-image { height: 210px; object-fit: cover; }
+        .hero-img-1 {
+            left: -12px;
+            top: 36px;
+            z-index: 2;
+            transform: rotate(-4deg) scale(.95);
+        }
 
-        .app-alert { transition: opacity .35s ease, transform .35s ease; }
-        .app-alert.fade-out { opacity: 0; transform: translateY(-8px); }
+        .hero-img-2 {
+            left: 50%;
+            top: -24px;
+            transform: translateX(-50%) scale(1.1);
+            z-index: 5;
+        }
+
+        .hero-img-3 {
+            right: -12px;
+            top: 36px;
+            z-index: 1;
+            transform: rotate(4deg) scale(.95);
+        }
+
+        .hero-stack:hover .hero-img-2 {
+            transform: translateX(-50%) translateY(-8px) scale(1.12);
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .hover-button {
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .portfolio-image {
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .app-alert {
+            transition: opacity .35s ease, transform .35s ease;
+        }
+
+        .app-alert.fade-out {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
 
         .hover-button {
             background-color: #183889;
@@ -51,14 +110,14 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top py-1">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center py-0" href="#beranda"><img class="img-fluid" style="width:74px; height:74px; object-fit:contain;" src="<?= $navbarLogo; ?>" alt="Logo"></a>
+            <a class="navbar-brand d-flex align-items-center py-0" href="/"><img class="img-fluid" style="width:74px; height:74px; object-fit:contain;" src="<?= $navbarLogo; ?>" alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-2">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Beranda</a>
+                        <a class="nav-link" aria-current="page" href="#beranda">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#tentang">Tentang</a>
@@ -91,7 +150,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                 </form>
             </div>
         </div>
-</nav>
+    </nav>
 
     <!-- Jumbotron -->
     <section id="beranda" class="section-block">
@@ -109,7 +168,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                         <h1 class="display-5 fw-bold mb-3">Destinasi Wisata Indonesia</h1>
                         <p class="fs-5 text-secondary mb-4">Temukan keindahan alam dan budaya Indonesia melalui destinasi wisata yang kami pilihkan untuk Anda.</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <a href="#portofolio" class="btn btn-primary btn-lg rounded-pill px-4 shadow-lg">Lihat Destinasi</a>
+                            <a href="#destinasi" class="btn btn-primary btn-lg rounded-pill px-4 shadow-lg">Lihat Destinasi</a>
                             <a href="#kontak" class="btn btn-outline-dark btn-lg rounded-pill px-4">Hubungi Kami</a>
                         </div>
                     </div>
@@ -139,7 +198,7 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         </div>
     </section>
 
-    <!-- Portofolio -->
+    <!-- destinasi -->
     <section id="destinasi" class="section-block pt-0">
         <div class="container">
             <div class="row g-4">
@@ -159,29 +218,29 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
                         ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card h-100 rounded-4 soft-card overflow-hidden shadow-lg">
-                                <div class="card-img-fixed">
+                                <div class="ratio ratio-4x3">
                                     <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>"
-                                       class="d-block text-decoration-none"
-                                       aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                        class="d-block text-decoration-none"
+                                        aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
                                         <img src="<?= $portfolioImageUrl; ?>" class="w-100 h-100 object-fit-cover" alt="<?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
                                     </a>
                                 </div>
                                 <div class="card-body text-start p-4">
                                     <h5 class="card-title fw-bold">
                                         <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>" class="text-decoration-none text-dark"
-                                           aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                            aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
                                             <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>
                                         </a>
                                     </h5>
+                                    <p>Harga Tiket: Rp <?= number_format($wisataItem->harga_tiket, 0, ',', '.'); ?></p>
                                     <p class="card-text text-secondary mb-3"><?= htmlspecialchars($wisataItem->deskripsi, ENT_QUOTES, 'UTF-8'); ?></p>
                                     <div class="d-flex flex-wrap gap-2 align-items-center">
                                         <span class="badge text-bg-success rounded-pill"><?= htmlspecialchars($wisataItem->nama_kategori ?? 'Wisata', ENT_QUOTES, 'UTF-8'); ?></span>
-                                        <span class="text-secondary small">Rp <?= number_format($wisataItem->harga_tiket, 0, ',', '.'); ?></span>
                                     </div>
                                     <a href="<?= base_url('home/detail_destinasi/' . $wisataItem->id_destinasi); ?>"
-                                       class="btn btn-sm mt-3 rounded-pill hover-button text-white"
-                                       style="background-color: #2f58c2;"
-                                       aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
+                                        class="btn btn-sm mt-3 hover-button text-white"
+                                        style="background-color: #2f58c2;"
+                                        aria-label="Lihat detail <?= htmlspecialchars($wisataItem->nama_destinasi, ENT_QUOTES, 'UTF-8'); ?>">
                                         Selengkapnya
                                     </a>
                                 </div>
@@ -283,22 +342,16 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         <div class="container">
             <div class="row justify-content-start">
                 <div class="col-12 col-lg-8 mx-auto">
-                    <div class="card section-card text-center rounded-4 shadow-lg">
+                    <div class="card section-card text-center roun  ded-4 shadow-lg">
                         <div class="card-header text-white text-center" style="background-color:#071c53;">
                             <h5 class="mb-0">Output Rencana Perjalanan</h5>
                         </div>
-                        <div class="card-body text-center">
-                        <?php if (
-                            !empty($budget) && !empty($hari) &&
-                            !empty($orang) && !empty($jenis)
-                        ) { ?>
-                            <p><b>Budget:</b> Rp <?= number_format($budget);
-                                                    ?></p>
-                            <p><b>Jumlah Hari:</b> <?= $hari; ?> hari</p>
-                            <p><b>Jumlah Orang:</b> <?= $orang; ?> Orang</p>
-                            <p><b>Jenis Wisata:</b> <?= $jenis; ?></p>
+                        <?php if (!empty($hasil)) { ?>
+                            <p><b>Budget:</b> Rp <?= number_format($hasil['budget']); ?></p>
+                            <p><b>Jumlah Hari:</b> <?= $hasil['hari']; ?> hari</p>
+                            <p><b>Jumlah Orang:</b> <?= $hasil['orang']; ?> Orang</p>
+                            <p><b>Jenis Wisata:</b> <?= $hasil['jenis']; ?></p>
                         <?php } ?>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -350,57 +403,57 @@ $portfolioImage = $assetImagePath . 'icon-logo.png';
         </div>
     </div>
     <script>
-    const images = [
-        "<?= $heroImage; ?>",
-        "<?= $heroImage2; ?>",
-        "<?= $heroImage3; ?>"
-    ];
+        const images = [
+            "<?= $heroImage; ?>",
+            "<?= $heroImage2; ?>",
+            "<?= $heroImage3; ?>"
+        ];
 
-    let index = 0;
-    let intervalTime = 3000;
-    let slider;
+        let index = 0;
+        let intervalTime = 3000;
+        let slider;
 
-    const img1 = document.getElementById("img1");
-    const img2 = document.getElementById("img2");
-    const img3 = document.getElementById("img3");
-    const stack = document.getElementById("heroStack");
+        const img1 = document.getElementById("img1");
+        const img2 = document.getElementById("img2");
+        const img3 = document.getElementById("img3");
+        const stack = document.getElementById("heroStack");
 
-    function updateImages() {
-        img1.src = images[index % images.length];
-        img2.src = images[(index + 1) % images.length];
-        img3.src = images[(index + 2) % images.length];
-    }
+        function updateImages() {
+            img1.src = images[index % images.length];
+            img2.src = images[(index + 1) % images.length];
+            img3.src = images[(index + 2) % images.length];
+        }
 
-    function nextSlide() {
-    img1.classList.add("fade-out");
-    img2.classList.add("fade-out");
-    img3.classList.add("fade-out");
+        function nextSlide() {
+            img1.classList.add("fade-out");
+            img2.classList.add("fade-out");
+            img3.classList.add("fade-out");
 
-    setTimeout(() => {
-        index++;
+            setTimeout(() => {
+                index++;
 
-        updateImages();
+                updateImages();
 
-        img1.classList.remove("fade-out");
-        img2.classList.remove("fade-out");
-        img3.classList.remove("fade-out");
+                img1.classList.remove("fade-out");
+                img2.classList.remove("fade-out");
+                img3.classList.remove("fade-out");
 
-    }, 300);
-}
+            }, 300);
+        }
 
-    function startSlider(speed = intervalTime) {
-        clearInterval(slider);
-        slider = setInterval(nextSlide, speed);
-    }
+        function startSlider(speed = intervalTime) {
+            clearInterval(slider);
+            slider = setInterval(nextSlide, speed);
+        }
 
-    startSlider();
+        startSlider();
 
-    stack.addEventListener("click", () => {
-    nextSlide();
-    
-    startSlider(intervalTime);
-});
-</script>
+        stack.addEventListener("click", () => {
+            nextSlide();
+
+            startSlider(intervalTime);
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -7,7 +7,7 @@ $isDestinasiActive = strpos($requestUri, 'destinasi') !== false;
 ?>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/dashboard">
                 <i class="bi bi-basket2-fill"></i>
                 <span class="logo-text">Wisata</span>
             </a>

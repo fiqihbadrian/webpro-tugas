@@ -7,7 +7,7 @@
                     <div class="user-profile">
                         <div class="user-avatar">AD</div>
                         <div class="user-info">
-                            <h6><?php echo $this->session->userdata('nama_lengkap'); ?></h6>
+                            <h6><?= $this->session->userdata('nama_lengkap') ?? 'Admin' ?></h6>
                             <p>Super Admin</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
         <!-- Page Header -->
         <div class="page-header">
             <h1>Dashboard Overview</h1>
-            <p>Welcome back! Here's what's happening with your food delivery platform today.</p>
+            <p>Selamat datang! Kelola destinasi wisata dan rencana perjalanan Anda di sini.</p>
         </div>
 
         <!-- Stats Grid -->
@@ -43,7 +43,7 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon primary">
-                        <i class="bi bi-receipt"></i>
+                        <i class="bi bi-people"></i>
                     </div>
                     <div class="stat-trend up">
                         <i class="bi bi-arrow-up"></i> 12%
@@ -60,7 +60,7 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon success">
-                        <i class="bi bi-currency-dollar"></i>
+                        <i class="bi bi-geo-alt"></i>
                     </div>
                     <div class="stat-trend up">
                         <i class="bi bi-arrow-up"></i> 8.5%
@@ -70,51 +70,71 @@
                 <div class="stat-label">Data Wisata</div>
                 <div class="stat-footer">
                     <i class="bi bi-graph-up"></i>
-                    <span>Loaded from tb_contoh</span>
+                    <span>Loaded from tb_destinasi</span>
                 </div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon warning">
-                        <i class="bi bi-bicycle"></i>
+                        <i class="bi bi-calendar-check"></i>
                     </div>
                     <div class="stat-trend up">
-                        <i class="bi bi-arrow-up"></i> 3.2%
+                        <i class="bi bi-arrow-up"></i>
                     </div>
                 </div>
-                <div class="stat-value" id="activeRiders">87</div>
-                <div class="stat-label">Active Riders</div>
+                <div class="stat-value" id="rencanaCount"><?php echo isset($total_rencana) ? number_format($total_rencana) : 0; ?></div>
+                <div class="stat-label">Rencana Perjalanan</div>
                 <div class="stat-footer">
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Database active</span>
+                    <i class="bi bi-journal-text"></i>
+                    <span>From tb_contoh</span>
                 </div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon info">
-                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-tags"></i>
                     </div>
                     <div class="stat-trend up">
-                        <i class="bi bi-arrow-up"></i> 0.3
+                        <i class="bi bi-arrow-up"></i>
                     </div>
                 </div>
-                <div class="stat-value">4.8</div>
-                <div class="stat-label">Average Rating</div>
+                <div class="stat-value"><?php echo isset($total_kategori) ? number_format($total_kategori) : 0; ?></div>
+                <div class="stat-label">Kategori Wisata</div>
                 <div class="stat-footer">
                     <i class="bi bi-chat-left-dots"></i>
-                    <span>Connected admin panel</span>
+                    <span>From tb_kategori</span>
                 </div>
             </div>
         </div>
 
+        <?php
+        // Prepare donut chart data from database
+        $chart_labels = [];
+        $chart_data = [];
+        $chart_colors = ['#2ECC71', '#3498DB', '#9B59B6', '#F39C12', '#E74C3C', '#1ABC9C'];
+        if (!empty($latest_wisata)) {
+            $counts = [];
+            foreach ($latest_wisata as $w) {
+                $cat = $w->nama_kategori ?? 'Lainnya';
+                $counts[$cat] = ($counts[$cat] ?? 0) + 1;
+            }
+            $chart_labels = array_keys($counts);
+            $chart_data = array_values($counts);
+        }
+        ?>
+        <script>
+        const kategoriLabels = <?= json_encode($chart_labels) ?>;
+        const kategoriData = <?= json_encode($chart_data) ?>;
+        const kategoriColors = <?= json_encode(array_slice($chart_colors, 0, count($chart_labels))) ?>;
+        </script>
         <!-- Charts Row -->
         <div class="row">
             <div class="col-lg-8 mb-4">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Revenue Analytics</h3>
+                        <h3>Grafik Wisata</h3>
                         <div class="chart-filters">
                             <button class="filter-btn active">Day</button>
                             <button class="filter-btn">Week</button>
@@ -129,17 +149,17 @@
             <div class="col-lg-4 mb-4">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Order Status</h3>
+                        <h3>Kategori Wisata</h3>
                     </div>
                     <canvas id="orderStatusChart"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Orders Table -->
+        <!-- Destinasi Table -->
         <div class="table-card">
             <div class="table-header">
-                <h3>Recent Destinasi</h3>
+                <h3>Destinasi Wisata Terbaru</h3>
                 <div class="table-actions">
                     <button class="filter-btn">
                         <i class="bi bi-funnel"></i> Filter
@@ -158,7 +178,6 @@
                             <th>Jam Operasional</th>
                             <th>Harga Tiket</th>
                             <th>Kategori</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -171,7 +190,6 @@
                                     <td><?php echo htmlspecialchars($wisata->jam_operasional, ENT_QUOTES, 'UTF-8'); ?></td>
                                     <td>Rp <?php echo number_format($wisata->harga_tiket, 0, ',', '.'); ?></td>
                                     <td><span class="badge bg-primary"><?php echo htmlspecialchars($wisata->nama_kategori, ENT_QUOTES, 'UTF-8'); ?></span></td>
-                                    <td>-</td>
                                     <td>
                                         <div class="action-buttons">
                                             <a href="<?= base_url('destinasi/detail/' . $wisata->id_destinasi) ?>" class="action-icon-btn" title="View"><i class="fas fa-eye"></i></a>
@@ -182,7 +200,7 @@
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <tr><td colspan="7" class="text-center">No data available</td></tr>
+                            <tr><td colspan="6" class="text-center">No data available</td></tr>
                         <?php endif; ?>
                     </tbody>
                 </table>

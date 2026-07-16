@@ -1,75 +1,96 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= base_url('public/assets/css/style.css') ?>">
-    <title>Profile</title>
-</head>
-
-<body>
-
-    <nav class="navbar">
-        <div class="container navbar__inner">
-            <div class="logo">Bian</div>
-            <ul>
-                <li><a href="<?= base_url('index.php') ?>">Beranda</a></li>
-                <li><a href="<?= base_url('index.php/profile#tentang') ?>">Tentang</a></li>
-                <li><a href="<?= base_url('index.php/profile#kontak') ?>">Kontak</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="hero">
-        <div class="container hero__inner">
-            <div class="left">
-                <div class="badge">Developer</div>
-                <h1>Halo Aku<br>Fiqih Badrian</h1>
-                <a href="<?= base_url('index.php/profile#tentang') ?>" style="text-decoration: none;" class="btn">Tentang Saya</a>
+<div class="dashboard-content">
+    <div class="page-header">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
+            <div>
+                <h1>Profile Settings</h1>
+                <p>Kelola informasi profil dan keamanan akun Anda.</p>
             </div>
-
-            <div class="right">
-                <img src="<?= base_url('public/assets/images/profile.jpg') ?>" alt="Profile Image">
+            <div class="d-flex gap-2">
+                <a href="<?= base_url('dashboard') ?>" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
             </div>
-        </div>
-    </header>
-
-    <!-- Tentang -->
-    <div id="tentang" class="section-content">
-        <div class="container">
-            <section class="section-panel about">
-                <div class="section-header">
-                    <h2>Tentang Saya</h2>
-                </div>
-                <div class="section-body">
-                    <p>Hi! I'm Fiqih Badrian, a passionate Front End Developer with a love for creating beautiful and functional web experiences. I specialize in building modern, responsive websites using the latest technologies.</p>
-                    <p>My journey in web development started with a curiosity about how websites work, and it has grown into a passion for crafting digital solutions that make a difference. I believe in writing clean, maintainable code and creating interfaces that users love.</p>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or learning about the latest trends in web development and design.</p>
-                </div>
-            </section>
         </div>
     </div>
 
-    <!-- Kontak -->
-    <div id="kontak" class="section-content">
-        <div class="container">
-            <section class="section-panel contact">
-                <div class="section-header">
-                    <h2>Kontak</h2>
+    <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> <?= $this->session->flashdata('success'); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> <?= $this->session->flashdata('error'); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <form action="<?= base_url('profile/update') ?>" method="post">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3><i class="fas fa-user-cog me-2"></i>Pengaturan Profil</h3>
+                    </div>
+                    <div style="padding:30px;">
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="nama" name="nama" value="<?= htmlspecialchars($user->nama ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($user->username ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                        </div>
+
+                        <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 30px 0;">
+
+                        <h5 style="color: #fff; margin-bottom: 20px;"><i class="fas fa-lock me-2"></i>Ubah Password</h5>
+                        <p style="color: #a0a4b8; font-size: 14px; margin-bottom: 20px;">Kosongkan jika tidak ingin mengubah password</p>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password Baru</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password baru">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="konfirmasi_password" class="form-label">Konfirmasi Password Baru</label>
+                            <input type="password" class="form-control" id="konfirmasi_password" name="konfirmasi_password" placeholder="Ulangi password baru">
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Simpan Perubahan
+                            </button>
+                            <a href="<?= base_url('dashboard') ?>" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Batal
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="section-body">
-                    <p>Jika Anda memiliki pertanyaan atau peluang, jangan ragu untuk menghubungi saya.</p>
-                    <ul class="contact-list">
-                        <li>Email: <a href="mailto:fiqihbadrian@gmail.com">fiqihbadrian@gmail.com</a></li>
-                        <li>LinkedIn: <a href="https://www.linkedin.com/in/fiqih-badrian-27b73b286/" target="_blank" rel="noopener noreferrer">linkedin.com/in/fiqih-badrian-27b73b286</a></li>
-                        <li>GitHub: <a href="https://github.com/fiqihbadrian" target="_blank" rel="noopener noreferrer">github.com/fiqihbadrian</a></li>
-                    </ul>
+            </form>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-info-circle me-2"></i>Informasi Akun</h3>
                 </div>
-            </section>
+                <div style="padding:20px;">
+                    <div class="mb-3">
+                        <small style="color: #a0a4b8;">ID User</small>
+                        <p style="color: #fff; margin: 5px 0 0 0; font-weight: 600;">#USR-<?= str_pad($user->id_user, 3, '0', STR_PAD_LEFT); ?></p>
+                    </div>
+                    <hr style="border-color: rgba(255, 255, 255, 0.1);">
+                    <hr style="border-color: rgba(255, 255, 255, 0.1);">
+                    <div class="alert" style="background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); color: #fca5a5; margin-top: 20px;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <small>Jika Anda mengubah password, Anda akan diminta login ulang.</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-</body>
-
-</html>
+</div>

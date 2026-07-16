@@ -4,7 +4,7 @@ $fallbackImage = $assetImagePath . 'icon-logo.png';
 $navbarLogo = $assetImagePath . 'small-logo.png';
 $detailImage = !empty($destinasi->foto) && file_exists('./public/assets/upload/' . $destinasi->foto)
     ? base_url('public/assets/upload/' . $destinasi->foto)
-    : $fallbackImage;
+    : $fallbackImage;   
 ?>
 <!doctype html>
 <html lang="en">
